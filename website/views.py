@@ -18,6 +18,4 @@ def rsvp():
 def rsvpform():
     return render_template("rsvpform.html")
 
-@views.route('/login')
-def login():
-    return render_template("login.html")
+
