@@ -3,7 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+#rsvp-m{
+  background: #c1694f
+}
+.move-front button{
+  background-color: #fff;
+  z-index: 4;
+}
 body {
   background: #17181a;
   font-family: "Montserrat", sans-serif;
@@ -60,7 +66,9 @@ main {
   flex: 1;
   flex-basis: 20rem;
   padding-left: 5rem;
+  /* padding-bottom: 5rem; */
   position: relative;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .hero-img {
   position: relative;
@@ -88,13 +96,23 @@ main {
 .mountain-span {
   color: rgb(255, 139, 93);
 }
-address {
-  font-size: 1.5rem;
+.address{
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: .5rem .5rem;
 }
+.address a{
+  text-decoration: none;
+  color: rgb(255, 139, 93);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+address {
+  font-size: 1.3rem;
+}
+
 .church {
   display: flex;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   padding: 0.5rem;
 }
 .main-page-date {
@@ -102,11 +120,28 @@ address {
   justify-content: center;
 }
 .date2 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .and {
   display: flex;
   justify-content: center;
+}
+.james{
+  display: flex;
+  justify-content: center;
+  /* padding-left: .5rem; */
+}
+.james span{
+  padding-left: .8rem;
+}
+.mary{
+  display: flex;
+  justify-content: center;
+  /* padding-right: .5rem; */
+}
+.mary span{
+  padding-right: .8rem;
 }
 .mountain-p {
   /* font-family: "Abril Fatface"; */
@@ -120,10 +155,11 @@ address {
 }
 .hero-desc h2 {
   font-family: "Abril Fatface";
-  font-size: 2.5rem;
+  font-size: 2rem;
+  align-self: center;
 }
 .hero-desc p {
-  padding: 1rem 0rem;
+  padding: .6rem 0rem;
   font-size: 1.3rem;
   color: white;
 }
@@ -310,26 +346,70 @@ body.hide {
   transform: translateX(-100%);
 }
 .swipe1 {
-  background: rgb(167, 110, 231);
+  background: #a73737;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7a2828, #a73737);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7a2828, #a73737); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: 5;
 }
 .swipe2 {
-  background: rgb(86, 124, 228);
+  background: #C6FFDD;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: 4;
 }
 .swipe3 {
-  background: rgb(255, 139, 93);
+  background: #40E0D0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: 3;
 }
+
+a{
+  text-decoration: none;
+  color: white;
+}
+/* rsvpformtwo start */
+.containertwo {  
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;  
+    padding: 25px; 
+    height: 40rem;  
+    background-color: #17181a;
+    color: white;
+    border-radius: 2rem;
+    /* border-radius: 2rem; */
+}  
+.card{
+  width: 50rem;
+  height: 45rem;
+} 
+/* rsvpformtwo end */
 
 
 /* rsvpform start*/
 .rsvp-main{
   margin: auto;
-  width: 80%;
+  width: 90%;
   left: 0;
   right: 0; 
 
+}
+.rsvp-m-img{
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
+  object-position: 0 30%;
+  justify-content: center;
+  border-radius: 2rem;
+}
+#rsvp-main-id{
+    width: 60%;
+    height: 90vh;
+}
+#rsvp-main-id .login-box{
+   height: 90vh;
 }
 .form-rsvp{
   height: 49.0625rem; 
@@ -418,7 +498,7 @@ form {
     border-radius: 2rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }   
-input[type=email],input[type=text], input[type=password] {   
+input[type=email],input[type=text], input[type=password],#attending {   
   width: 100%;   
   margin: 8px 0;  
   padding: .75rem 1.25rem;   
@@ -441,8 +521,18 @@ button:hover {
         margin: 10px 5px;  
 }   
 .close{
-  z-index: 4;
-}      
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}  
+.close span{
+  color: white;
+  font-size: 2.5rem;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}    
 .container {  
     display: flex;
     justify-content: center;
@@ -461,6 +551,7 @@ button:hover {
   main {
     width: 100%;
     margin: 0;
+    overflow-x: hidden;
   }
   .hero-img {
     height: 50vh;
@@ -476,12 +567,14 @@ button:hover {
     height: 50vh;
     object-position: top;
   }
+
 }
 
 @media screen and (max-width: 1024px) {
   main {
     width: 100%;
     margin: 0;
+    overflow-x: hidden;
   }
   .slide {
     display: block;
@@ -496,13 +589,13 @@ button:hover {
     padding-top: 4rem;
   }
   .hero-desc h2 {
-    font-size: 1.6rem;
-    padding: 1rem 0rem;
+    font-size: 1.5rem;
+    /* padding: 1rem 0rem; */
   }
   .hero-desc p {
-    padding: 1rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    padding: .6rem;
+    font-size: .8rem;
+    line-height: 1rem;
     text-align: center;
   }
   .explore {
@@ -525,6 +618,7 @@ button:hover {
   }
   .nav-bar {
     display: block;
+    padding-top: 10vh;
   }
   .nav-links {
     font-size: 2rem;
@@ -538,5 +632,11 @@ button:hover {
     font-size: 1.2rem;
     padding: 2rem;
     text-align: center;
+  }
+  .date1{
+    font-size: 1rem;
+  }
+  #logo{
+    font-size: 1.5rem;
   }
 }

@@ -109,6 +109,15 @@ function navToggle(e) {
 //Barba Page Transitions
 const logo = document.querySelector("#logo");
 const date = document.querySelector(".date");
+var logoutTemp = document.getElementsByClassName("appear")
+var logoutRemoV = document.getElementsByClassName("appear")
+var burger2 = document.getElementsByClassName("burger")
+var burger3 = document.getElementsByClassName("burger")
+
+function autoRefresh() {
+    window.location = window.location.href;
+}
+
 barba.init({
   views: [
     {
@@ -117,7 +126,7 @@ barba.init({
         logo.href = "/";
         let code = "f"
         changeBackgroundColor(code)
-        navDropEffectInHome()
+        // navDropEffectInHome()
         animateSlides();
       },
       beforeLeave() {
@@ -129,10 +138,10 @@ barba.init({
     {
       namespace: "fashion",
       beforeEnter() {
-        logo.href = "/";
         detailAnimation();
       },
       beforeLeave() {
+        // window.location.href="/login"
         controller.destroy();
         detailScene.destroy();
       },
@@ -140,12 +149,23 @@ barba.init({
     {
       namespace:"fashion1",
       beforeEnter() {
-        logo.href = "/";
+        // logo.href = "/";
         let code = "e"
         changeBackgroundColor(code)
       },
       beforeLeave() {
+        // window.location.href="/login"
         controller.destroy();
+      },
+    },
+    {
+      namespace: "login",
+      beforeEnter() {
+        detailAnimation();
+      },
+      beforeLeave() {
+        controller.destroy();
+        detailScene.destroy();
       },
     },
   ],
@@ -166,6 +186,7 @@ barba.init({
       },
       enter({ current, next }) {
         let done = this.async();
+        
         //Scroll to the top
         window.scrollTo(0, 0);
         //An Animation
@@ -192,7 +213,7 @@ barba.init({
 
 function changeBackgroundColor(code){
   if(code === "e"){
-    document.body.style.background = "#f1c8c1";
+    document.body.style.background = "#f0725c";
   }else{
     document.body.style.background = "#17181a"
   }
@@ -200,9 +221,9 @@ function changeBackgroundColor(code){
 function navDropEffectInHome(){
     const nav = document.querySelector(".nav-header");
     const slidTl = gsap.timeline({
-      defaults: { duration: 1.2, ease: "power2.inOut" },
+      defaults: { ease: "power2.inOut" },
     });
-    slidTl.fromTo(nav, { y: "-100%" }, { y: "0%" }, "-=0.05");
+    slidTl.fromTo(nav,1,{ y: "-100%" }, { y: "0%",ease: "power2.inOut" }, "-=.3");
 }
 function detailAnimation() {
   controller = new ScrollMagic.Controller();
@@ -230,6 +251,14 @@ function detailAnimation() {
       .addTo(controller);
   });
 }
+
+
+window.addEventListener("beforeunload", function (event) {
+   autoRefresh()
+   this.alert("OK")
+});
+
+
 //EventListeners
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);

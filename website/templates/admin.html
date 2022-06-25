@@ -1,0 +1,17 @@
+{% extends "index.html" %} 
+{% block title %}Admin Page{% endblock %} 
+{% block content %}
+    <main data-barba="container" data-barba-namespace="admain">
+      <h1 align="center">RSVP Member</h1>
+      <ul class="list-group list-group-flush" id="notes">
+        {% for member in user.attendee_responses %}
+          <li class="list-group-item">
+              {{ member.data }}
+              <button type="button" class="close" onClick="deleteNote({{ member.id }})">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </li>
+        {% endfor %}
+      </ul>
+    </main>
+{% endblock %}
