@@ -1,22 +1,24 @@
-{% extends "index.html" %} 
+{% extends "base.html" %} 
 {% block title %}Login{% endblock %}
 {% block content %}
-    <main data-barba="container" data-barba-namespace="login">
-      <div class="login-box gradient-custom">
-        <div class="login-box-holder">
-          <center> <h1>Login</h1> </center>  
-          <form method="POST">  
-              <div class="container">   
-                  <label>Username : </label>   
-                  <input type="text" placeholder="Enter Username" name="username" required>  
-                  <label>Password : </label>   
-                  <input type="password" placeholder="Enter Password" name="password" required>  
-                  <button class="gradient-custom" type="submit">Login</button>   
-                  <input type="checkbox" checked="checked"> Remember me      
-              </div>   
-          </form>   
-        </div>
+<section data-barba="container" data-barba-namespace="login">
+  <main >
+    <div class="login-box gradient-custom">
+      <div class="login-box-holder">
+        <center> <h1>Login</h1> </center>  
+        <form method="POST">  
+            <div class="container">   
+                <label>Username : </label>   
+                <input type="text" placeholder="Enter Username" name="username" required>  
+                <label>Password : </label>   
+                <input type="password" placeholder="Enter Password" name="password" required>  
+                <button class="gradient-custom" type="submit">Login</button>   
+                <input type="checkbox" checked="checked"> Remember me      
+            </div>   
+        </form>   
       </div>
-    </main>
+    </div>
+  </main>
+</section>
 {% endblock %}
  

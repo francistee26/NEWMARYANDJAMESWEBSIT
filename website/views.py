@@ -7,7 +7,7 @@ from flask_login import login_required, current_user
 views = Blueprint('views', __name__)
 
 
-@views.route('/')
+@views.route('/',methods=['POST'])
 def logo():
     return render_template("index.html", user=current_user)
 
@@ -15,7 +15,7 @@ def logo():
 def rsvp():
     return render_template("rsvp.html",user=current_user)
 
-@views.route('/rsvpform')
+@views.route('/rsvpform',methods=['GET', 'POST'])
 @login_required
 def rsvpform():
     return render_template("rsvpform.html",user=current_user)
@@ -25,7 +25,7 @@ def rsvpform():
 def rsvpformtwo():
     return render_template("rsvpformtwo.html", user=current_user)
 
-@views.route('/admin')
+@views.route('/admin',methods=['GET', 'POST'])
 @login_required
 def admin():
     id = current_user.id

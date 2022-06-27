@@ -30,32 +30,45 @@
       href="{{ url_for('static', filename='style.css') }}"
     />
   </head>
-  <body id="home-body-color" data-barba="wrapper">
-   {% block head %}
-   {% endblock %}
-
+  <body id="home-body-color" data-barba="wrapper">   
+{% block head %}
+    <header class="nav-header">
+         {% if user.is_authenticated %}
+           <div class="date"><h3 class="date1 rsvp-date">Thursday, 25 August 2022</h3></div>
+           <h1><a href="" id="logo" class="rsvp-title">J&M Wedding</a></h1>
+           <div class="date appear"><h3 class="date1 rsvp-date burger"><a class="tog" href="/logout">Logout</a> </h3></div>
+         {% else %}
+           <div class="date"><h3 class="date1 rsvp-date">Thursday, 25 August 2022</h3></div>
+           <h1><a href="/" id="logo" class="rsvp-title">J&M Wedding</a></h1>
+           <div class="burger">
+             <div class="line1"></div>
+             <div class="line2"></div>
+           </div>
+         {% endif %}
+    </header>
+{% endblock %}
     {% with messages = get_flashed_messages(with_categories=true) %} 
-    {% if messages %} 
-      {% for category, message in messages %} 
-        {% if category =='error' %}
-          <div class="move-front center-m alert alert-danger alert-dismissable fade show" role="alert">
-            {{message}}
-            <center><button type="button" class="close" data-dismiss="alert">
-              &times;
-            </button></center>
-          </div>
-        {% else %}
-          <div class="move-front alert alert-success alert-dismissable fade show" role="alert">
-            {{message}}
-            <center><button type="button" class="close" data-dismiss="alert">
-              &times;
-            </button></center>
-          </div>
-        {% endif %} 
-      {% endfor %} 
-    {% endif %} 
+       {% if messages %} 
+         {% for category, message in messages %} 
+           {% if category =='error' %}
+             <div class="move-front center-m alert alert-danger alert-dismissable fade show" role="alert">
+               {{message}}
+               <center><button type="button" class="close" data-dismiss="alert">
+                 &times;
+               </button></center>
+             </div>
+           {% else %}
+             <div class="move-front alert alert-success alert-dismissable fade show" role="alert">
+               {{message}}
+               <center><button type="button" class="close" data-dismiss="alert">
+                 &times;
+               </button></center>
+             </div>
+           {% endif %} 
+         {% endfor %} 
+       {% endif %} 
     {% endwith %}
-    
+
     {% block content %}
     {% endblock %}
     <nav class="nav-bar">

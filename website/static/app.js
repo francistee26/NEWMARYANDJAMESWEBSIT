@@ -70,7 +70,8 @@ function activeCursor(e) {
   if (
     item.id === "logo" ||
     item.classList.contains("burger") ||
-    item.classList.contains("date1")
+    item.classList.contains("date1") ||
+    item.classList.contains("tog")
   ) {
     mouse.classList.add("nav-active");
   } else {
@@ -87,10 +88,10 @@ function activeCursor(e) {
   }
 }
 function navToggle(e) {
-  if (!e.target.classList.contains("active")) {
+  if (!e.target.classList.contains("active") && !e.target.classList.contains("tog")) {
     e.target.classList.add("active");
-    gsap.to(".line1", 0.5, { rotate: "45", y: 5, background: "black" });
-    gsap.to(".line2", 0.5, { rotate: "-45", y: -5, background: "black" });
+    gsap.to(".line1", 0.5, { rotate: "45", y: 3.35, background: "black" });
+    gsap.to(".line2", 0.5, { rotate: "-45", y: -3.35, background: "black" });
     gsap.to("#logo", 1, { color: "black" });
     gsap.to(".date1", 1, { color: "black" });
     gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
@@ -111,103 +112,106 @@ const logo = document.querySelector("#logo");
 const date = document.querySelector(".date");
 var logoutTemp = document.getElementsByClassName("appear")
 var logoutRemoV = document.getElementsByClassName("appear")
-var burger2 = document.getElementsByClassName("burger")
+
 var burger3 = document.getElementsByClassName("burger")
 
-function autoRefresh() {
-    window.location = window.location.href;
-}
+// function autoRefresh() {
+//     window.location = window.location.href;
+// }
 
-barba.init({
-  views: [
-    {
-      namespace: "logo",
-      beforeEnter() {
-        animateSlides();
-        logo.href = "/";
-        let code = "f"
-        changeBackgroundColor(code)
-      },
-      beforeLeave() {
-        slideScene.destroy();
-        pageScene.destroy();
-        controller.destroy();
-      },
-    },
-    {
-      namespace: "fashion",
-      beforeEnter() {
-        logo.href = "/";
-        detailAnimation();
-      },
-      beforeLeave() {
-        controller.destroy();
-        detailScene.destroy();
-      },
-    },
-    {
-      namespace:"fashion1",
-      beforeEnter() {
-        logo.href = "/";
-        let code = "e"
-        changeBackgroundColor(code)
-      },
-      beforeLeave() {
-        controller.destroy();
-      },
-    },
-    // {
-    //   namespace: "login",
-    //   beforeEnter() {
-    //     detailAnimation();
-    //   },
-    //   beforeLeave() {
-    //     controller.destroy();
-    //     detailScene.destroy();
-    //   },
-    // },
-  ],
-  transitions: [
-    {
-      leave({ current, next }) {
-        let done = this.async();
-        //An Animation
-        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-        tl.fromTo(current.container, 1, { opacity: 1 }, { opacity: 0 });
-        tl.fromTo(
-          ".swipe",
-          0.75,
-          { x: "-100%" },
-          { x: "0%", onComplete: done },
-          "-=0.5"
-        );
-      },
-      enter({ current, next }) {
-        let done = this.async();
+// barba.init({
+//   views: [
+//     {
+//       namespace: "logo",
+//       beforeEnter() {
+//         animateSlides();
+//         logo.href = "/";
+//         let code = "f"
+//         changeBackgroundColor(code)
+
+//       },
+//       beforeLeave() {
+//         slideScene.destroy();
+//         pageScene.destroy();
+//         controller.destroy();
+//       },
+//     },
+//     {
+//       namespace: "fashion",
+//       beforeEnter() {
+//         logo.href = "/";
+//         detailAnimation();
+//       },
+//       beforeLeave() {
+//         controller.destroy();
+//         detailScene.destroy();
+//       },
+//     },
+//     {
+//       namespace:"fashion1",
+//       beforeEnter() {
+//         logo.href = "/";
+//         let code = "e"
+//         changeBackgroundColor(code)
+//       },
+//       beforeLeave() {
+//         controller.destroy();
+//       },
+//     },
+//     {
+//       namespace: "login",
+//       beforeEnter() {
+//         var burger2 = document.querySelector(".burger");
+//         burger2.addEventListener("click", navToggle);
+//         // detailAnimation();
+//       },
+//       beforeLeave() {
+//         controller.destroy();
+//         detailScene.destroy();
+//       },
+//     },
+//   ],
+//   transitions: [
+//     {
+//       leave({ current, next }) {
+//         let done = this.async();
+//         //An Animation
+//         const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+//         tl.fromTo(current.container, 1, { opacity: 1 }, { opacity: 0 });
+//         tl.fromTo(
+//           ".swipe",
+//           0.75,
+//           { x: "-100%" },
+//           { x: "0%", onComplete: done },
+//           "-=0.5"
+//         );
+//       },
+//       enter({ current, next }) {
+//         let done = this.async();
         
-        //Scroll to the top
-        window.scrollTo(0, 0);
-        //An Animation
-        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-        tl.fromTo(
-          ".swipe",
-          1,
-          { x: "0%" },
+//         //Scroll to the top
+//         window.scrollTo(0, 0);
+//         //An Animation
+//         const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+//         tl.fromTo(
+//           ".swipe",
+//           1,
+//           { x: "0%" },
 
-          { x: "100%", stagger: 0.2, onComplete: done }
-        );
-        tl.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
-        tl.fromTo(
-          ".nav-header",
-          1,
-          { y: "-100%" },
-          { y: "0%", ease: "power2.inOut" },
-          "-=1.5"
-        );
-      },
-    },
-  ],
-});
+//           { x: "100%", stagger: 0.2, onComplete: done }
+//         );
+//         tl.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
+//         tl.fromTo(
+//           ".nav-header",
+//           1,
+//           { y: "-100%" },
+//           { y: "0%", ease: "power2.inOut" },
+//           "-=1.5"
+//         );
+//       },
+//     },
+//   ],
+// });
 
 function changeBackgroundColor(code){
   if(code === "e"){
@@ -223,32 +227,32 @@ function navDropEffectInHome(){
     });
     slidTl.fromTo(nav,1,{ y: "-100%" }, { y: "0%",ease: "power2.inOut" }, "-=.3");
 }
-function detailAnimation() {
-  controller = new ScrollMagic.Controller();
-  const slides = document.querySelectorAll(".detail-slide");
-  slides.forEach((slide, index, slides) => {
-    const slideTl = gsap.timeline({ defaults: { duration: 1 } });
-    let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
-    const nextImg = nextSlide.querySelector("img");
-    slideTl.fromTo(slide, { opacity: 1 }, { opacity: 0 });
-    slideTl.fromTo(nextSlide, { opacity: 0 }, { opacity: 1 }, "-=1");
-    slideTl.fromTo(nextImg, { x: "50%" }, { x: "0%" });
-    //Scene
-    detailScene = new ScrollMagic.Scene({
-      triggerElement: slide,
-      duration: "100%",
-      triggerHook: 0,
-    })
-      .setPin(slide, { pushFollowers: false })
-      .setTween(slideTl)
-      // .addIndicators({
-      //   colorStart: "white",
-      //   colorTrigger: "white",
-      //   name: "detailScene"
-      // })
-      .addTo(controller);
-  });
-}
+// function detailAnimation() {
+//   controller = new ScrollMagic.Controller();
+//   const slides = document.querySelectorAll(".detail-slide");
+//   slides.forEach((slide, index, slides) => {
+//     const slideTl = gsap.timeline({ defaults: { duration: 1 } });
+//     let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
+//     const nextImg = nextSlide.querySelector("img");
+//     slideTl.fromTo(slide, { opacity: 1 }, { opacity: 0 });
+//     slideTl.fromTo(nextSlide, { opacity: 0 }, { opacity: 1 }, "-=1");
+//     slideTl.fromTo(nextImg, { x: "50%" }, { x: "0%" });
+//     //Scene
+//     detailScene = new ScrollMagic.Scene({
+//       triggerElement: slide,
+//       duration: "100%",
+//       triggerHook: 0,
+//     })
+//       .setPin(slide, { pushFollowers: false })
+//       .setTween(slideTl)
+//       // .addIndicators({
+//       //   colorStart: "white",
+//       //   colorTrigger: "white",
+//       //   name: "detailScene"
+//       // })
+//       .addTo(controller);
+//   });
+// }
 
 // document.getElementsByClassName("slide").addEventListener("load", animateSlides);
 // window.onload = animateSlides();
@@ -257,7 +261,20 @@ function detailAnimation() {
 // }
 
 
+function colorCh(){
+  const pathname = window.location.pathname;
+  let code = "e"
+  if (pathname === "/rsvpform"){
+    changeBackgroundColor(code)
+  }
+  else{
+    changeBackgroundColor("z")
+  }
+}
+
 //EventListeners
+window.addEventListener("load", colorCh);
+window.addEventListener("load", animateSlides);
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
