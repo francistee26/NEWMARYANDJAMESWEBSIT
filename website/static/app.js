@@ -123,11 +123,10 @@ barba.init({
     {
       namespace: "logo",
       beforeEnter() {
+        animateSlides();
         logo.href = "/";
         let code = "f"
         changeBackgroundColor(code)
-        // navDropEffectInHome()
-        animateSlides();
       },
       beforeLeave() {
         slideScene.destroy();
@@ -138,10 +137,10 @@ barba.init({
     {
       namespace: "fashion",
       beforeEnter() {
+        logo.href = "/";
         detailAnimation();
       },
       beforeLeave() {
-        // window.location.href="/login"
         controller.destroy();
         detailScene.destroy();
       },
@@ -149,25 +148,24 @@ barba.init({
     {
       namespace:"fashion1",
       beforeEnter() {
-        // logo.href = "/";
+        logo.href = "/";
         let code = "e"
         changeBackgroundColor(code)
       },
       beforeLeave() {
-        // window.location.href="/login"
         controller.destroy();
       },
     },
-    {
-      namespace: "login",
-      beforeEnter() {
-        detailAnimation();
-      },
-      beforeLeave() {
-        controller.destroy();
-        detailScene.destroy();
-      },
-    },
+    // {
+    //   namespace: "login",
+    //   beforeEnter() {
+    //     detailAnimation();
+    //   },
+    //   beforeLeave() {
+    //     controller.destroy();
+    //     detailScene.destroy();
+    //   },
+    // },
   ],
   transitions: [
     {
@@ -252,11 +250,11 @@ function detailAnimation() {
   });
 }
 
-
-window.addEventListener("beforeunload", function (event) {
-   autoRefresh()
-   this.alert("OK")
-});
+// document.getElementsByClassName("slide").addEventListener("load", animateSlides);
+// window.onload = animateSlides();
+// function myFunction() {
+//    animateSlides();
+// }
 
 
 //EventListeners

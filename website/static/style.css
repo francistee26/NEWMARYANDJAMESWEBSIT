@@ -580,7 +580,7 @@ button:hover {
     display: block;
     width: 100%;
     text-align: center;
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
   }
   .hero-desc {
     padding: 0;
@@ -638,5 +638,26 @@ button:hover {
   }
   #logo{
     font-size: 1.5rem;
+  }
+}
+
+/* iphone XR */
+@media screen and (max-width: 415px),screen and (max-height: 897px) {
+  html{
+    font-size: .7rem;
+  }
+}
+
+/* samsung galaxy s8+ */
+@media screen and (max-width: 361px),screen and (max-height: 741px) {
+  html{
+    font-size: .4rem;
+  }
+}
+
+/* iphone SE */
+@media screen and (max-width: 375px),screen and (max-height: 668px) {
+  html{
+    font-size: .7rem;
   }
 }
