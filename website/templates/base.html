@@ -35,7 +35,8 @@
     <header class="nav-header">
          {% if user.is_authenticated %}
            <div class="date"><h3 class="date1 rsvp-date">Thursday, 25 August 2022</h3></div>
-           <h1><a href="" id="logo" class="rsvp-title">J&M Wedding</a></h1>
+           <h1><a href="/rsvpform" id="logo" class="rsvp-title">J&M Wedding</a></h1>
+           <div class="date"><h3 class="date1 rsvp-date"><a class="burger tog" href="/admin">Admin</a></h3></div>
            <div class="date appear"><h3 class="date1 rsvp-date burger"><a class="tog" href="/logout">Logout</a> </h3></div>
          {% else %}
            <div class="date"><h3 class="date1 rsvp-date">Thursday, 25 August 2022</h3></div>

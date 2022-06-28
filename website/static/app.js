@@ -278,3 +278,12 @@ window.addEventListener("load", animateSlides);
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
+
+function deleteRSVP(rsvpId) {
+  fetch("/delete-rsvp", {
+    method: "POST",
+    body: JSON.stringify({ rsvpId: rsvpId }),
+  }).then((_res) => {
+    window.location.href = "/";
+  });
+}

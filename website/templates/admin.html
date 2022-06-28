@@ -1,17 +1,39 @@
-{% extends "index.html" %} 
+{% extends "base.html" %} 
 {% block title %}Admin Page{% endblock %} 
 {% block content %}
-    <main data-barba="container" data-barba-namespace="admain">
-      <h1 align="center">RSVP Member</h1>
-      <ul class="list-group list-group-flush" id="notes">
-        {% for member in user.attendee_responses %}
-          <li class="list-group-item">
-              {{ member.data }}
-              <button type="button" class="close" onClick="deleteNote({{ member.id }})">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </li>
-        {% endfor %}
-      </ul>
-    </main>
+  <main id="admin" data-barba="container" data-barba-namespace="admin">
+      <h1 align="center">RSVP Members</h1>
+    <ul class="list-group list-group-flush" id="notes">
+      {% for member in user.attendee_responses %}
+      {% endfor %}
+    </ul>
+
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">RSVP Names</th>
+          <th scope="col">RSVP Response</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+          <ol class="list-group list-group-flush" id="notes">
+            {% for member in user.attendee_responses %} 
+            <tr>
+                <td>{{member.id}}</td>
+                <td>{{member.attendee_name}}</td>
+                <td>{{member.response}}</td>
+                <td>{{member.date}}</td>
+                <td>
+                    <button type="button" class="close" onClick="deleteRSVP({{ member.id }})">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </td> 
+            </tr>
+            {% endfor %}
+          </ol>
+      </tbody>
+    </table>
+  </main>
 {% endblock %}
