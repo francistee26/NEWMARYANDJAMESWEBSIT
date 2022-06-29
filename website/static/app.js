@@ -94,6 +94,7 @@ function navToggle(e) {
     gsap.to(".line2", 0.5, { rotate: "-45", y: -3.35, background: "black" });
     gsap.to("#logo", 1, { color: "black" });
     gsap.to(".date1", 1, { color: "black" });
+    gsap.to(".faba", 1, { color: "black" });
     gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
     document.body.classList.add("hide");
   } else {
@@ -221,44 +222,13 @@ function changeBackgroundColor(code){
   }
 }
 function navDropEffectInHome(){
-    const nav = document.querySelector(".nav-header");
-    const slidTl = gsap.timeline({
+    const nav2 = document.querySelector(".nav-header");
+    const slidTl1 = gsap.timeline({
       defaults: { ease: "power2.inOut" },
     });
-    slidTl.fromTo(nav,1,{ y: "-100%" }, { y: "0%",ease: "power2.inOut" }, "-=.3");
+    slidTl1.fromTo(nav2,1.2,{ y: "-100%" }, { y: "0%",ease: "power2.inOut" }, "-=.5");
 }
-// function detailAnimation() {
-//   controller = new ScrollMagic.Controller();
-//   const slides = document.querySelectorAll(".detail-slide");
-//   slides.forEach((slide, index, slides) => {
-//     const slideTl = gsap.timeline({ defaults: { duration: 1 } });
-//     let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
-//     const nextImg = nextSlide.querySelector("img");
-//     slideTl.fromTo(slide, { opacity: 1 }, { opacity: 0 });
-//     slideTl.fromTo(nextSlide, { opacity: 0 }, { opacity: 1 }, "-=1");
-//     slideTl.fromTo(nextImg, { x: "50%" }, { x: "0%" });
-//     //Scene
-//     detailScene = new ScrollMagic.Scene({
-//       triggerElement: slide,
-//       duration: "100%",
-//       triggerHook: 0,
-//     })
-//       .setPin(slide, { pushFollowers: false })
-//       .setTween(slideTl)
-//       // .addIndicators({
-//       //   colorStart: "white",
-//       //   colorTrigger: "white",
-//       //   name: "detailScene"
-//       // })
-//       .addTo(controller);
-//   });
-// }
 
-// document.getElementsByClassName("slide").addEventListener("load", animateSlides);
-// window.onload = animateSlides();
-// function myFunction() {
-//    animateSlides();
-// }
 
 
 function colorCh(){
@@ -274,6 +244,7 @@ function colorCh(){
 
 //EventListeners
 window.addEventListener("load", colorCh);
+window.addEventListener("load", navDropEffectInHome);
 window.addEventListener("load", animateSlides);
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);

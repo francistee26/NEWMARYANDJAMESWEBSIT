@@ -20,6 +20,7 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 
     <link
       rel="icon"
@@ -36,7 +37,7 @@
          {% if user.is_authenticated %}
            <div class="date"><h3 class="date1 rsvp-date">Thursday, 25 August 2022</h3></div>
            <h1><a href="/rsvpform" id="logo" class="rsvp-title">J&M Wedding</a></h1>
-           {% if user.id == 1 %}
+           {% if user.id == 1 or user.id == 2%}
             <div class="date"><h3 class="date1 rsvp-date"><a class="burger tog" href="/admin">Admin</a></h3></div>
            {% endif %}
            <div class="date appear"><h3 class="date1 rsvp-date burger"><a class="tog" href="/logout">Logout</a> </h3></div>
@@ -76,15 +77,13 @@
     {% endblock %}
     <nav class="nav-bar">
       <ul class="nav-links">
-        <h3>Twitter</h3>
-        <h3>Youtube</h3>
-        <h3>Instragram</h3>
+        <h3><a class="faba" href="https://www.instagram.com/jameskamara414/"><i class="fab fa-instagram-square share">  jameskamara414</i> </a></h3>
+        <h3><a class="faba" href="https://www.instagram.com/mary_jay_tee/"><i class="fab fa-instagram-square share">  mary_jay_tee</i> </a></h3>
       </ul>
       <div class="contact">
         <h2>Stay in touch.</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorem
-          praesentium ea amet error quidem natus. Magnam explicabo sed tenetur?
+          If you have any questions contact us using our instagrams
         </p>
       </div>
     </nav>

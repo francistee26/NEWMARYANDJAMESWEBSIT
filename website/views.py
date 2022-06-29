@@ -13,10 +13,6 @@ views = Blueprint('views', __name__)
 def logo():
     return render_template("index.html", user=current_user)
 
-@views.route('/rsvp')
-def rsvp():
-    return render_template("rsvp.html",user=current_user)
-
 @views.route('/rsvpform',methods=['GET', 'POST'])
 @login_required
 def rsvpform():
@@ -35,20 +31,18 @@ def rsvpform():
             new_rsvp = RSVP(attendee_name=full_name,response=attending, user_id=1)
             db.session.add(new_rsvp)
             db.session.commit()
+            new_rsvp2 = RSVP(attendee_name=full_name,response=attending, user_id=2)
+            db.session.add(new_rsvp2)
+            db.session.commit()
             flash('You have RSVP successfully!', category='success')
 
     return render_template("rsvpform.html",user=current_user)
-
-@views.route('/rsvpformtwo')
-@login_required
-def rsvpformtwo():
-    return render_template("rsvpformtwo.html", user=current_user)
 
 @views.route('/admin',methods=['GET', 'POST'])
 @login_required
 def admin():
     id = current_user.id
-    if id == 1:
+    if id == 1 or id == 2:
         return render_template("admin.html",user=current_user)
     else:
         flash("You must be an admin user to access this page!")
