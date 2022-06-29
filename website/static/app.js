@@ -284,6 +284,6 @@ function deleteRSVP(rsvpId) {
     method: "POST",
     body: JSON.stringify({ rsvpId: rsvpId }),
   }).then((_res) => {
-    window.location.href = "/";
+    window.location.href = "/admin";
   });
 }

@@ -19,7 +19,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
-                login_user(user, remember=False)
+                login_user(user, remember=True)
                 return redirect(url_for('views.rsvpform'))
             else:
                 flash('Incorrect password, try again.', category='error')
@@ -58,9 +58,9 @@ def sign_up():
                 password, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(new_user, remember=False)
+            login_user(new_user, remember=True)
             flash('Account created!', category='success')
-            # return redirect(url_for('auth.lo'))
+            return redirect(url_for('auth.login'))
             # add user to database
 
     return render_template("signup.html",user=current_user)

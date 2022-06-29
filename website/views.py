@@ -32,7 +32,7 @@ def rsvpform():
         elif len(full_name) < 2:
             flash("Full name must be greater than 2 characters.",category="error")
         else:
-            new_rsvp = RSVP(attendee_name=full_name,response=attending, user_id=current_user.id)
+            new_rsvp = RSVP(attendee_name=full_name,response=attending, user_id=1)
             db.session.add(new_rsvp)
             db.session.commit()
             flash('You have RSVP successfully!', category='success')
